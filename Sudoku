@@ -1,0 +1,41 @@
+n=int(input())
+lis=[]
+i=0
+sudoku=True
+lis123=list(range(1,n*n+1))
+s123=set(lis123)
+#Taking input
+while i<n**2:
+  a=list(map(int,input().split()))
+  lis.append(a)
+  i=i+1
+#for rows
+for item in lis:
+  s1=set(item)
+  if s1.intersection(s123)!=s1.union(s123):
+    sudoku=False
+    break
+#for columns
+for j in range(0,n**2):
+  lis5=[]
+  for item in lis:
+    lis5.append(item[j])
+    s2=set(lis5)
+  if s2.intersection(s123)!=s1.union(s123):
+    sudoku=False
+    break 
+#for blocks
+for k in range(0,n**2,n):
+  list3=[]
+  for q in range(0,n**2,n):
+    for w in range(0,n):
+      for t in range(0,n):
+        list3.append(lis[k+w][q+t])
+    s3=set(list3)
+  if s3.intersection(s123)!=s1.union(s123):
+    sudoku=False
+    break
+if sudoku==True:
+  print("Yes")
+else:
+  print("No")
