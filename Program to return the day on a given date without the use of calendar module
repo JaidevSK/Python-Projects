@@ -1,0 +1,76 @@
+dd, mm, yyyy=input().split("/")
+dd=int(dd)
+mm=int(mm)
+yyyy=int(yyyy)
+D=int(str(yyyy)[2]+str(yyyy)[3])
+#q gives the number of leap years
+#each nly gives 1 odd day and each ly gives two
+q=D//4
+a=dd+q+1+D
+#a is the total odd days as of now
+#the ly are counted twice once as q and once as D
+#here i am ading extra days which i call as odd days not divisible by 7
+if mm==1:
+    j=a
+    #no odd addition
+elif mm==2:
+    j=a+3
+    #jan has 31 days so 31%7=3 so 3 odd days
+elif mm==3:
+    j=a+3
+    #no odd days in feb
+elif mm==4:
+    j=a+6
+elif mm==5:
+    j=a+8
+elif mm==6:
+    j=a+11
+elif mm==7:
+    j=a+13
+elif mm==8:
+    j=a+16
+elif mm==9:
+    j=a+19
+elif mm==10:
+    j=a+21
+elif mm==11:
+    j=a+24
+elif mm==12:
+    j=a+26
+#if feb is taken at year end ,it is convinient
+if yyyy%100==0 and yyyy%400==0:
+    if mm==1:
+        j=j-1
+    elif mm==2:
+        j=j-1
+if yyyy%100!=0 and yyyy%4==0:
+    if mm==1:
+        j=j-1
+    elif mm==2:
+        j=j-1
+#if the year is recurring after 400 years, the deviation would be -1 day
+#if the duration is 100 
+if int(str(yyyy)[0]+str(yyyy)[1])%4==0:
+    s=j+6
+elif int(str(yyyy)[0]+str(yyyy)[1])%4==1:
+    s=j+4
+elif int(str(yyyy)[0]+str(yyyy)[1])%4==2:
+    s=j+2
+elif int(str(yyyy)[0]+str(yyyy)[1])%4==3:
+    s=j+0
+final=s
+rem=final%7
+if rem==1:
+    print("Sunday")
+elif rem==2:
+    print("Monday")
+elif rem==3:
+    print("Tuesday")
+elif rem==4:
+    print("Wednesday")
+elif rem==5:
+    print("Thursday")
+elif rem==6:
+    print("Friday")
+else:
+    print('Sunday')
